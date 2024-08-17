@@ -1,0 +1,16 @@
+create database pizzashop; // Created a database named pizzashop
+create table orders (     // Created a table named order
+order_id int not null,
+order_date date not null,
+order_time time not null,
+primary key(order_id));
+create table order_details (  // Created a table named order_details
+order_details_id int not null,
+order_id int not null,
+pizza_id text not null,
+quantity int not null,
+primary key(order_details_id));
+
+--// Analysis some questions related to pizzashop----
+1. Retrieve the total numbers of order placed--
+   SQL query:  select count(order_id) as total_orders from orders;
