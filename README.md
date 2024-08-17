@@ -1,0 +1,1 @@
+The objective of this project was to analyze the sales data of a pizza shop to gain insights into customer preferences, sales trends, and overall business performance. I have analyzed the datasheet of the sales of a shop names "Pizzashop" using SQL Queries.
