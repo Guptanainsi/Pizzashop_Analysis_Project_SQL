@@ -1,9 +1,11 @@
 create database pizzashop; // Created a database named pizzashop
+
 create table orders (     // Created a table named order
 order_id int not null,
 order_date date not null,
 order_time time not null,
 primary key(order_id));
+
 create table order_details (  // Created a table named order_details
 order_details_id int not null,
 order_id int not null,
@@ -11,6 +13,21 @@ pizza_id text not null,
 quantity int not null,
 primary key(order_details_id));
 
---// Analysis some questions related to pizzashop----
-1. Retrieve the total numbers of order placed--
+---- Analyze the sales data of pizzashop----
+1. Retrieve the total numbers of order placed.
    SQL query:  select count(order_id) as total_orders from orders;
+2. Calculate the total revenue generated from pizza sales.
+   SQL query: select 
+    round(sum(order_details.quantity * pizzas.price),2) as total_sales
+    from order_details join pizzas
+    on pizzas.pizza_id = order_details.pizza_id
+3. Identify the highest-priced pizza.
+   SQL query: select pizza_types.name, pizzas.price
+    from pizza_types join pizzas
+    on pizza_types.pizza_type_id = pizzas.pizza_type_id
+    order by pizzas.price desc limit 1;
+4. Identify the most common pizza size ordered.
+  SQL query: select pizzas.size, count(order_details.order_details_id) as order_count
+   from pizzas join order_details
+   on pizzas.pizza_id = order_details.pizza_id
+   group by pizzas.size order by order_count desc;
